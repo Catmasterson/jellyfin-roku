@@ -379,7 +379,10 @@ function chainLookupReturn(root as dynamic, propertyPath as string, default as d
 
     rootPath = rootPath.LookupCI(properties[0][0].Replace("`", ""))
 
-    if not isValid(rootPath) then return default
+    if not isValid(rootPath)
+        print "WARNING: chainLookupReturn failed at property "; properties[0][0].Replace("`", ""); " and fell back to "; default
+        return default
+    end if
 
     propertyLength = Len(properties[0][0])
 
